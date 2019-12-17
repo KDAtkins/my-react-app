@@ -12,11 +12,17 @@ console.log("App.js is running");
 // 	</div>
 // );
 
+var user = {
+	name: 'Kevin D Atkins',
+	age: 32,
+	location: 'San Diego'
+};
+
 var myTemplate = (
 	<div>
-		<h1>Kevin Atkins</h1>
-		<p>Age: 32</p>
-		<p>Location: San Diego</p>
+		<h1>{user.name}</h1>
+		<p>Age: {user.age}</p>
+		<p>Location: {user.location}</p>
 	</div>
 );
 

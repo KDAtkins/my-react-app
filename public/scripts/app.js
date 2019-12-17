@@ -2,17 +2,40 @@
 
 console.log("App.js is running");
 
-// // JSX = Javascript XML
-// var template = (
-// 	<div>
-// 		<h1>Indecision App</h1>
-// 		<p>This is some info</p>
-// 		<ol>
-// 			<li>Item one</li>
-// 			<li>Item two</li>
-// 		</ol>
-// 	</div>
-// );
+var indexPage = {
+	title: 'Indecision App',
+	subtitle: 'Some text for the Index Page'
+};
+
+// JSX = Javascript XML
+var template = React.createElement(
+	'div',
+	null,
+	React.createElement(
+		'h1',
+		null,
+		indexPage.title
+	),
+	React.createElement(
+		'p',
+		null,
+		indexPage.subtitle
+	),
+	React.createElement(
+		'ol',
+		null,
+		React.createElement(
+			'li',
+			null,
+			'Item one'
+		),
+		React.createElement(
+			'li',
+			null,
+			'Item two'
+		)
+	)
+);
 
 var user = {
 	name: 'Kevin D Atkins',
@@ -44,4 +67,4 @@ var myTemplate = React.createElement(
 
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(myTemplate, appRoot);
+ReactDOM.render(template, appRoot);

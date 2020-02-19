@@ -1,5 +1,3 @@
-'use strict';
-
 // const square = function (x) {
 // 	return x * x;
 // };
@@ -14,15 +12,13 @@
 //
 // console.log(squareArrow(9));
 
-var fullName = 'Kevin D. Atkins';
+const fullName = 'Kevin D. Atkins';
 
-var getFirst = function getFirst(fullName) {
+const getFirst = (fullName) => {
 	return fullName.split(' ')[0];
 };
 
-var getFirstName = function getFirstName(fullName) {
-	return fullName.split(' ')[0];
-};
+const getFirstName = (fullName) => fullName.split(' ')[0];
 
 console.log(getFirstName(fullName));
 console.log(getFirst(fullName));

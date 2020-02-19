@@ -2,24 +2,43 @@
 
 console.log("App.js is running");
 
-var indexPage = {
+// JSX = Javascript XML
+var app = {
 	title: 'Indecision App',
-	subtitle: 'Some text for the Index Page'
+	subtitle: 'Subtitle for Indecision App',
+	options: ['1', '2']
 };
 
-// JSX = Javascript XML
+function getOptions(options) {
+	if (options.length > 0) {
+		return 'Here are your options';
+	} else {
+		return 'No options';
+	}
+}
+
 var template = React.createElement(
 	'div',
 	null,
 	React.createElement(
 		'h1',
 		null,
-		indexPage.title
+		app.title
+	),
+	app.subtitle && React.createElement(
+		'p',
+		null,
+		app.subtitle
 	),
 	React.createElement(
 		'p',
 		null,
-		indexPage.subtitle
+		getOptions(app.options)
+	),
+	React.createElement(
+		'p',
+		null,
+		app.options.length > 0 ? 'Here are your options' : 'No options'
 	),
 	React.createElement(
 		'ol',
@@ -27,21 +46,39 @@ var template = React.createElement(
 		React.createElement(
 			'li',
 			null,
-			'Item one'
+			'Item 1'
 		),
 		React.createElement(
 			'li',
 			null,
-			'Item two'
+			'Item 2'
+		),
+		React.createElement(
+			'li',
+			null,
+			'Item 3'
 		)
 	)
 );
 
 var user = {
-	name: 'Kevin D Atkins',
+	name: 'Kevin D. Atkins',
 	age: 32,
 	location: 'San Diego'
 };
+
+function getLocation(location) {
+	if (location) {
+		return React.createElement(
+			'p',
+			null,
+			'Location: ',
+			location
+		);
+	} else {
+		return undefined;
+	}
+}
 
 var myTemplate = React.createElement(
 	'div',
@@ -49,20 +86,15 @@ var myTemplate = React.createElement(
 	React.createElement(
 		'h1',
 		null,
-		user.name
+		user.name ? user.name : 'Anonymous'
 	),
-	React.createElement(
+	user.age && user.age >= 18 && React.createElement(
 		'p',
 		null,
 		'Age: ',
 		user.age
 	),
-	React.createElement(
-		'p',
-		null,
-		'Location: ',
-		user.location
-	)
+	getLocation(user.location)
 );
 
 var appRoot = document.getElementById('app');

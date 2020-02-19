@@ -1,35 +1,54 @@
 console.log("App.js is running");
 
-var indexPage = {
+// JSX = Javascript XML
+var app = {
 	title: 'Indecision App',
-	subtitle: 'Some text for the Index Page'
+	subtitle: 'Subtitle for Indecision App',
+	options: ['1', '2']
 };
 
-// JSX = Javascript XML
+function getOptions(options){
+	if(options.length > 0){
+		return 'Here are your options';
+	} else {
+		return 'No options'
+	}
+}
+
 var template = (
 	<div>
-		<h1>{indexPage.title}</h1>
-		<p>{indexPage.subtitle}</p>
+		<h1>{app.title}</h1>
+		{app.subtitle && <p>{app.subtitle}</p>}
+		<p>{getOptions(app.options)}</p>
+		<p>{app.options.length > 0 ? 'Here are your options' : 'No options'}</p>
 		<ol>
-			<li>Item one</li>
-			<li>Item two</li>
+			<li>Item 1</li>
+			<li>Item 2</li>
+			<li>Item 3</li>
 		</ol>
 	</div>
 );
 
 var user = {
-	name: 'Kevin D Atkins',
+	name: 'Kevin D. Atkins',
 	age: 32,
 	location: 'San Diego'
 };
 
+function getLocation(location) {
+	if(location){
+		return <p>Location: {location}</p>;
+	} else {
+		return undefined;
+	}
+}
+
 var myTemplate = (
 	<div>
-		<h1>{user.name}</h1>
-		<p>Age: {user.age}</p>
-		<p>Location: {user.location}</p>
-	</div>
-);
+		<h1>{user.name ? user.name : 'Anonymous'}</h1>
+		{(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
+		{getLocation(user.location)}
+	</div>);
 
 var appRoot = document.getElementById('app');
 

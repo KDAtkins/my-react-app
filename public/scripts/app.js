@@ -1,28 +1,148 @@
 'use strict';
 
-// const square = function (x) {
-// 	return x * x;
-// };
-//
-// console.log(square(3));
-//
-// // const squareArrow = (x) => {
-// // 	return x * x;
-// // };
-//
-// const squareArrow = (x) => x * x;
-//
-// console.log(squareArrow(9));
+console.log("App.js is running");
 
-var fullName = 'Kevin D. Atkins';
-
-var getFirst = function getFirst(fullName) {
-	return fullName.split(' ')[0];
+// JSX = Javascript XML
+var app = {
+	title: 'Indecision App',
+	subtitle: 'Subtitle for Indecision App',
+	options: ['1', '2']
 };
 
-var getFirstName = function getFirstName(fullName) {
-	return fullName.split(' ')[0];
+function getOptions(options) {
+	if (options.length > 0) {
+		return 'Here are your options';
+	} else {
+		return 'No options';
+	}
+}
+
+var template = React.createElement(
+	'div',
+	null,
+	React.createElement(
+		'h1',
+		null,
+		app.title
+	),
+	app.subtitle && React.createElement(
+		'p',
+		null,
+		app.subtitle
+	),
+	React.createElement(
+		'p',
+		null,
+		getOptions(app.options)
+	),
+	React.createElement(
+		'p',
+		null,
+		app.options.length > 0 ? 'Here are your options' : 'No options'
+	),
+	React.createElement(
+		'ol',
+		null,
+		React.createElement(
+			'li',
+			null,
+			'Item 1'
+		),
+		React.createElement(
+			'li',
+			null,
+			'Item 2'
+		),
+		React.createElement(
+			'li',
+			null,
+			'Item 3'
+		)
+	)
+);
+
+var user = {
+	name: 'Kevin D. Atkins',
+	age: 32,
+	location: 'San Diego'
 };
 
-console.log(getFirstName(fullName));
-console.log(getFirst(fullName));
+function getLocation(location) {
+	if (location) {
+		return React.createElement(
+			'p',
+			null,
+			'Location: ',
+			location
+		);
+	} else {
+		return undefined;
+	}
+}
+
+var myTemplate = React.createElement(
+	'div',
+	null,
+	React.createElement(
+		'h1',
+		null,
+		user.name ? user.name : 'Anonymous'
+	),
+	user.age && user.age >= 18 && React.createElement(
+		'p',
+		null,
+		'Age: ',
+		user.age
+	),
+	getLocation(user.location)
+);
+
+var count = 0;
+var addOne = function addOne() {
+	count++;
+	renderCounterApp();
+};
+
+var minusOne = function minusOne() {
+	count--;
+	renderCounterApp();
+};
+
+var reset = function reset() {
+	count = 0;
+	renderCounterApp();
+};
+
+var appRoot = document.getElementById('app');
+
+var renderCounterApp = function renderCounterApp() {
+	var templateTwo = React.createElement(
+		'div',
+		null,
+		React.createElement(
+			'h1',
+			null,
+			'Count: ',
+			count
+		),
+		React.createElement(
+			'button',
+			{ onClick: addOne },
+			'+1'
+		),
+		React.createElement(
+			'button',
+			{ onClick: minusOne },
+			'-1'
+		),
+		React.createElement(
+			'button',
+			{ onClick: reset },
+			'Reset'
+		)
+	);
+
+	ReactDOM.render(templateTwo, appRoot);
+};
+
+renderCounterApp();
